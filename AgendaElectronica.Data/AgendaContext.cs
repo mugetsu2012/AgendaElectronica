@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AgendaElectronica.Core.Models;
+﻿using AgendaElectronica.Core.Models;
 using AgendaElectronica.Data.Configs;
 using Microsoft.EntityFrameworkCore;
-using System.Configuration;
+
 namespace AgendaElectronica.Data
 {
     public class AgendaContext: DbContext
@@ -31,5 +28,7 @@ namespace AgendaElectronica.Data
             builder.ApplyConfiguration(new RolConfig());
             builder.ApplyConfiguration(new UsuarioConfig());
         }
+
+        
     }
 }

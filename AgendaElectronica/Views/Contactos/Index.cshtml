@@ -1,0 +1,42 @@
+﻿@using System.Security.Claims
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<b style="font-size: 30px">
+    @if (User.Identity.IsAuthenticated)
+    {
+        @:El usuario esta logueado, su nombre es: @User.Identity.Name, sus claims son: 
+        <br />
+        <ul>
+
+       
+            @foreach (var item in User.Claims)
+            {
+                <li>
+                    Claim ---> Tipo: @item.Type,  Valor: @item.Value
+                </li>
+            }
+        </ul>
+
+        if (User.IsInRole("2"))
+        {
+            <p>Wow! Eres un admin :O</p>
+        }
+        else if(User.IsInRole("1"))
+        {
+            <p>Vaya, vaya, solo eres un simple usuario</p>
+        }
+        else
+        {
+            <p>Oye...que es lo que eres? O.o</p>
+        }
+
+    }
+    else
+    {
+        @:El usuario no esta logueado :(
+    }
+</b>
+

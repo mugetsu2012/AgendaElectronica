@@ -26,7 +26,7 @@ namespace AgendaElectronica.Core.Models
         /// <summary>
         /// Password encriptado 
         /// </summary>
-        public byte[] Password { get; set; }
+        public string Password { get; set; }
 
         /// <summary>
         /// Lista de contactos de este usuario
@@ -37,5 +37,10 @@ namespace AgendaElectronica.Core.Models
         /// Rol del usuario
         /// </summary>
         public Rol Rol { get; set; }
+
+        public string NombreCompleto()
+        {
+            return Nombre + " " + Apellido;
+        }
     }
 }

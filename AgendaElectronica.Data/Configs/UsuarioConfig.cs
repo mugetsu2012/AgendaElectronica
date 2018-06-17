@@ -1,5 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using AgendaElectronica.Core.Models;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +21,25 @@ namespace AgendaElectronica.Data.Configs
             builder.HasOne(t => t.Rol).WithMany().HasForeignKey(f => f.IdRol).IsRequired();
 
             builder.ToTable(nameof(Usuario));
+
+            builder.HasData(
+                new Usuario
+                {
+                    Apellido = "Admin",
+                    Nombre = "Admincito",
+                    NombreUsuario = "admin",
+                    IdRol = 2,
+                    Password = "g2dgyiVaaGb+Ev6Sg3MzpMx8Sl86ZYn+dTjQV2D7LF0zKu481s0QYRX+zaS/wTL5"
+                },
+                new Usuario
+                {
+                    Apellido = "Anonimo",
+                    Nombre = "Usuario",
+                    NombreUsuario = "anon",
+                    IdRol = 2,
+                    Password = "g2dgyiVaaGb+Ev6Sg3MzpMx8Sl86ZYn+dTjQV2D7LF0zKu481s0QYRX+zaS/wTL5"
+                }
+            );
         }
     }
 }

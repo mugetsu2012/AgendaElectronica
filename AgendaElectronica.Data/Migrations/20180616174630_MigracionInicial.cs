@@ -45,7 +45,7 @@ namespace AgendaElectronica.Data.Migrations
                     IdRol = table.Column<int>(nullable: false),
                     Nombre = table.Column<string>(maxLength: 200, nullable: false),
                     Apellido = table.Column<string>(maxLength: 200, nullable: false),
-                    Password = table.Column<byte[]>(nullable: false)
+                    Password = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -89,6 +89,21 @@ namespace AgendaElectronica.Data.Migrations
                         principalColumn: "NombreUsuario",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Rol",
+                columns: new[] { "Codigo", "Nombre" },
+                values: new object[] { 1, "Usuario" });
+
+            migrationBuilder.InsertData(
+                table: "Rol",
+                columns: new[] { "Codigo", "Nombre" },
+                values: new object[] { 2, "Admin" });
+
+            migrationBuilder.InsertData(
+                table: "Usuario",
+                columns: new[] { "NombreUsuario", "Apellido", "IdRol", "Nombre", "Password" },
+                values: new object[] { "admin", "Admin", 2, "Admincito", "g2dgyiVaaGb+Ev6Sg3MzpMx8Sl86ZYn+dTjQV2D7LF0zKu481s0QYRX+zaS/wTL5" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Contacto_IdMultimedia",

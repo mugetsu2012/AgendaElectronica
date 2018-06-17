@@ -17,6 +17,11 @@ namespace AgendaElectronica.Data.Configs
             builder.Property(t => t.Nombre).IsRequired().HasMaxLength(100);
 
             builder.ToTable(nameof(Rol));
+
+            builder.HasData(
+                new Rol { Codigo = 1, Nombre = "Usuario" },
+                new Rol { Codigo = 2, Nombre = "Admin" }
+            );
         }
     }
 }

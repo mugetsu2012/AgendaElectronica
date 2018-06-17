@@ -1,0 +1,35 @@
+﻿@model LoginVm
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+
+
+<form asp-controller="Cuenta" asp-action="Loguearse">
+    <label asp-for="NombreUsuario">Ingrese su nombre de usuario</label>
+    <input type="text" asp-for="NombreUsuario" placeholder="Nombre usuario"/>
+    <br/>
+    <label asp-for="Password">Ingrese su clave: </label>
+    <input type="password" asp-for="Password"/>
+    <br/>
+    <button type="submit">Ingresar</button>
+</form>
+
+
+@if (ViewBag.mensaje != null)
+{
+    Mensaje mensaje = ViewBag.mensaje;
+
+    <input type="hidden" id="mensaje" value="@mensaje.Texto"/>
+    <input type="hidden" id="tipoMensaje" value="@mensaje.TipoMensaje.ToString()"/>
+
+}
+
+<script>
+    var mensaje = document.getElementById("mensaje");
+    if (mensaje) {
+        var tipoMensaje = document.getElementById("tipoMensaje");
+        console.log("Tipo mensaje: " + tipoMensaje.value + ", mensaje: " + mensaje.value);
+    }
+</script>

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgendaElectronica.Data.Migrations
 {
     [DbContext(typeof(AgendaContext))]
-    [Migration("20180610023335_MigracionInicial")]
+    [Migration("20180616174630_MigracionInicial")]
     partial class MigracionInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -100,6 +100,11 @@ namespace AgendaElectronica.Data.Migrations
                     b.HasKey("Codigo");
 
                     b.ToTable("Rol");
+
+                    b.HasData(
+                        new { Codigo = 1, Nombre = "Usuario" },
+                        new { Codigo = 2, Nombre = "Admin" }
+                    );
                 });
 
             modelBuilder.Entity("AgendaElectronica.Core.Models.Usuario", b =>
@@ -118,7 +123,7 @@ namespace AgendaElectronica.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(200);
 
-                    b.Property<byte[]>("Password")
+                    b.Property<string>("Password")
                         .IsRequired();
 
                     b.HasKey("NombreUsuario");
@@ -126,6 +131,10 @@ namespace AgendaElectronica.Data.Migrations
                     b.HasIndex("IdRol");
 
                     b.ToTable("Usuario");
+
+                    b.HasData(
+                        new { NombreUsuario = "admin", Apellido = "Admin", IdRol = 2, Nombre = "Admincito", Password = "g2dgyiVaaGb+Ev6Sg3MzpMx8Sl86ZYn+dTjQV2D7LF0zKu481s0QYRX+zaS/wTL5" }
+                    );
                 });
 
             modelBuilder.Entity("AgendaElectronica.Core.Models.Contacto", b =>

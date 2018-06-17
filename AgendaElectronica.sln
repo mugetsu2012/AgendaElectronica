@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaElectronica", "AgendaElectronica\AgendaElectronica.csproj", "{5A678FEB-ECB0-4188-BFFA-6B1CD6AC7B2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaElectronica", "AgendaElectronica\AgendaElectronica.csproj", "{5A678FEB-ECB0-4188-BFFA-6B1CD6AC7B2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaElectronica.Core", "AgendaElectronica.Core\AgendaElectronica.Core.csproj", "{99A02473-7536-4475-98CD-571DAEC78C0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaElectronica.Core", "AgendaElectronica.Core\AgendaElectronica.Core.csproj", "{99A02473-7536-4475-98CD-571DAEC78C0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaElectronica.Data", "AgendaElectronica.Data\AgendaElectronica.Data.csproj", "{CF4CBD9A-C75D-44F5-8328-54987EFCBDBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaElectronica.Data", "AgendaElectronica.Data\AgendaElectronica.Data.csproj", "{CF4CBD9A-C75D-44F5-8328-54987EFCBDBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaElectronica.Services", "AgendaElectronica.Services\AgendaElectronica.Services.csproj", "{4F4AC793-5687-4D09-A9CB-7BBB45F82DBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{CF4CBD9A-C75D-44F5-8328-54987EFCBDBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF4CBD9A-C75D-44F5-8328-54987EFCBDBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF4CBD9A-C75D-44F5-8328-54987EFCBDBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F4AC793-5687-4D09-A9CB-7BBB45F82DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F4AC793-5687-4D09-A9CB-7BBB45F82DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F4AC793-5687-4D09-A9CB-7BBB45F82DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F4AC793-5687-4D09-A9CB-7BBB45F82DBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
