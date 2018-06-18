@@ -79,6 +79,8 @@ namespace AgendaElectronica
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseMvcWithDefaultRoute();
 
             
