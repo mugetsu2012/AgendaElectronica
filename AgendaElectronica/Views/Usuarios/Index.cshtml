@@ -1,7 +1,93 @@
-﻿
+﻿@model List<AgendaElectronica.Core.Models.Usuario>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Usuarios";
 }
 
-<h2>Index</h2>
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-rose card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <h4 class="card-title">Usuarios</h4>
+                </div>
+                <div class="card-body">
+                    <div class="text-left">
+                        <button type="button" class="btn btn-success is-filled" id="btnNuevoUser">Nuevo</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+
+                                <th>Usuario</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Rol</th>
+                                <th class="text-right">Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var usuario in Model)
+                            {
+                                <tr>
+
+                                    <td>@usuario.NombreUsuario</td>
+                                    <td>@usuario.Nombre</td>
+                                    <td>@usuario.Apellido</td>
+                                    <td>@usuario.Rol.Nombre</td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="Editar" class="btn btn-success editUser" data-url="@Url.Action("CrearEditar", new {usuario = usuario.NombreUsuario})">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button type="button" rel="tooltip" title="Eliminar" class="btn btn-danger deleteUser" data-usuario="@usuario.NombreUsuario">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form asp-controller="Usuarios" asp-action="EliminarUsuario" id="frmDeleteUsuario" style="display: none;">
+    <input type="hidden" id="codeDelete" name="usuario"/>
+</form>
+
+<input type="hidden" id="urlNuevoUser" value="@Url.Action("CrearEditar")"/>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $('#btnNuevoUser').on('click', function(e) {
+                e.preventDefault();
+                var urlObj = $("#urlNuevoUser").val();
+
+                location.href = urlObj;
+
+            });
+
+            $('.editUser').on('click', function(e) {
+                e.preventDefault();
+                var urlEdit = $(this).data('url');
+                location.href = urlEdit;
+            });
+
+            $('.deleteUser').on('click', function (e) {
+                e.preventDefault();
+                var code = $(this).data('usuario');
+                $('#codeDelete').val(code);
+                $('#frmDeleteUsuario').submit();
+            });
+        });
+    </script>
+}

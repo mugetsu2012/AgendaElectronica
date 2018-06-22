@@ -29,11 +29,10 @@ namespace AgendaElectronica.Controllers
         public IActionResult Login()
         {
 
-            Mensaje mensaje = TempData.Get<Mensaje>("mensaje");
-
-            if (mensaje != null)
+            
+            if (TempData["mensaje"] != null)
             {
-                ViewBag.mensaje = mensaje;
+                ViewBag.mensaje = TempData["mensaje"];
             }
             return View();
         }
@@ -82,16 +81,6 @@ namespace AgendaElectronica.Controllers
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-            Mensaje mensaje = new Mensaje()
-            {
-                Texto = "Has cerrado tu session correctamente",
-                TipoMensaje = TipoMensaje.Exito
-            };
-
-            TempData.Put("mensaje", mensaje);
-
-
             return RedirectToAction("Login");
         }
     }

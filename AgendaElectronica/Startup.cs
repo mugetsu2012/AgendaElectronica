@@ -10,6 +10,7 @@ using AgendaElectronica.Core.Services;
 using AgendaElectronica.Data;
 using AgendaElectronica.Services.Providers;
 using AgendaElectronica.Services.Services;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,7 +23,6 @@ namespace AgendaElectronica
 {
     public class Startup
     {
-        
         public Startup(IConfiguration config)
         {
             Configuration = config;
@@ -42,7 +42,10 @@ namespace AgendaElectronica
             //Sse agregan los servicios necesarios para funcionar con mvc
             services.AddDbContext<AgendaContext>(options => options.UseSqlServer(connection));
             services.AddScoped<DbContext, AgendaContext>();
+            services.AddSingleton<IConfiguration>(Configuration);
+
             services.AddMvc();
+            services.AddAutoMapper();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>

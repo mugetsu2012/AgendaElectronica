@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AgendaElectronica.Models
 {
     public class GuardarContactoVm
     {
+        [HiddenInput]
         public int? Codigo { get; set; }
 
         /// <summary>
@@ -28,16 +31,19 @@ namespace AgendaElectronica.Models
         /// <summary>
         /// Telefono movil, nullable
         /// </summary>
+        [Phone]
         public string TelefonoMovil { get; set; }
 
         /// <summary>
         /// Telefono del trabajo, nullable
         /// </summary>
+        [Phone]
         public string TelefonoTrabajo { get; set; }
 
         /// <summary>
         /// Email del contacto, nullable
         /// </summary>
+        [EmailAddress]
         public string Email { get; set; }
 
         /// <summary>

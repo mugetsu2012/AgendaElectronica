@@ -78,31 +78,35 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" data-toggle="collapse" href="#optsUsuarios">
-                    <i class="material-icons">apps</i>
-                    <p>
-                        Usuarios
-                        <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse" id="optsUsuarios">
-                    <ul class="nav">
-                        <li class="nav-item ">
-                            <a class="nav-link" asp-controller="Usuarios" asp-action="Index">
-                                <span class="sidebar-mini"> U </span>
-                                <span class="sidebar-normal"> Usuarios </span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" asp-controller="Usuarios" asp-action="CrearEditar">
-                                <span class="sidebar-mini"> NU </span>
-                                <span class="sidebar-normal"> Nuevo usuario </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            @if (User.Identity.IsAuthenticated == false || User.IsInRole("2"))
+            {
+                <li class="nav-item ">
+                    <a class="nav-link" data-toggle="collapse" href="#optsUsuarios">
+                        <i class="material-icons">apps</i>
+                        <p>
+                            Usuarios
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <div class="collapse" id="optsUsuarios">
+                        <ul class="nav">
+                            <li class="nav-item ">
+                                <a class="nav-link" asp-controller="Usuarios" asp-action="Index">
+                                    <span class="sidebar-mini"> U </span>
+                                    <span class="sidebar-normal"> Usuarios </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" asp-controller="Usuarios" asp-action="CrearEditar">
+                                    <span class="sidebar-mini"> NU </span>
+                                    <span class="sidebar-normal"> Nuevo usuario </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            }
+            
         </ul>
     </div>
 </div>
@@ -139,9 +143,21 @@
 
                                 </p>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" asp-controller="Cuenta" asp-action="LogOut">Salir</a>
-                            </div>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" asp-controller="Cuenta" asp-action="LogOut">Salir</a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" asp-controller="Cuenta" asp-action="Login">Ingresar</a>
+                                </div>
+                            }
+
+
+                            
                         </li>
 
                     </ul>
@@ -239,5 +255,7 @@
         demo.initVectorMap();
     });
 </script>
+
+@RenderSection("scripts", false)
 
 </html>

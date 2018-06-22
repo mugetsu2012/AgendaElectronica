@@ -74,7 +74,6 @@ namespace AgendaElectronica.Services.Services
             }
             else
             {
-                multimedia.Codigo = contacto.Multimedia.Codigo;
                 contacto.Multimedia = multimedia;
             }
 
@@ -93,7 +92,10 @@ namespace AgendaElectronica.Services.Services
 
         public void EliminarContacto(int idCodigo, string idUsuario)
         {
-            Contacto contacto = _contactoRepository.FindBy(x => x.Codigo == idCodigo);
+            Contacto contacto = _contactoRepository.FindBy(x => x.Codigo == idCodigo, new Expression<Func<Contacto, object>>[]
+            {
+                x => x.Multimedia
+            });
 
             if (contacto.IdUsuario != idUsuario)
             {

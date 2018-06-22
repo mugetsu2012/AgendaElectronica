@@ -60,5 +60,10 @@ namespace AgendaElectronica.Core.Models
         /// Objeto multimedia, es opcional
         /// </summary>
         public Multimedia Multimedia { get; set; }
+
+        public string GetNombreCompleto()
+        {
+            return Nombre + " " + Apellido;
+        }
     }
 }

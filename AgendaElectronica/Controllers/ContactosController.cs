@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using AgendaElectronica.Core.DTOs;
 using AgendaElectronica.Core.Models;
 using AgendaElectronica.Core.Services;
 using AgendaElectronica.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AgendaElectronica.Controllers
@@ -11,10 +13,13 @@ namespace AgendaElectronica.Controllers
     public class ContactosController:Controller
     {
         private readonly IContactosService _contactosService;
+        private readonly IMapper _mapper;
 
-        public ContactosController(IContactosService contactosService)
+        public ContactosController(IContactosService contactosService,
+            IMapper mapper)
         {
             _contactosService = contactosService;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
@@ -28,7 +33,9 @@ namespace AgendaElectronica.Controllers
         public IActionResult CrearEditar(int codigo = 0)
         {
             Contacto contacto = codigo == 0 ? new Contacto() : _contactosService.GetContacto(codigo);
-            return View(contacto);
+
+            GuardarContactoVm guardarContacto = _mapper.Map<GuardarContactoVm>(contacto);
+            return View(guardarContacto);
         }
 
         [HttpPost]
@@ -47,7 +54,7 @@ namespace AgendaElectronica.Controllers
             };
 
             //Dependiendo de si estamos creando o editanto
-            Contacto contacto = guardarContacto.Codigo == null
+            Contacto contacto = guardarContacto.Codigo == null || guardarContacto.Codigo.Value == 0
                 ? _contactosService.CrearContacto(crearEditarContacto)
                 : _contactosService.EditarContacto(crearEditarContacto);
 
@@ -85,7 +92,7 @@ namespace AgendaElectronica.Controllers
         {
             Multimedia multimedia = _contactosService.GetMultimedia(idMultimedia);
 
-            return File(multimedia.Archivo, multimedia.MimeType);
+            return multimedia == null ? null : File(multimedia.Archivo, multimedia.MimeType);
         }
     }   
 }

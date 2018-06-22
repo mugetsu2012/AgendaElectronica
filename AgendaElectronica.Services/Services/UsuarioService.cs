@@ -74,7 +74,7 @@ namespace AgendaElectronica.Services.Services
             Usuario usuario = _usuarioRepository.FindBy(x => x.NombreUsuario == nombreUsuario,
                 new Expression<Func<Usuario, object>>[]
                 {
-                    x => x.Contactos.Select(y => y.Multimedia)
+                    x => x.Contactos
                 });
 
             foreach (Multimedia multimedia in usuario.Contactos.Select(y => y.Multimedia).ToList())
@@ -92,7 +92,8 @@ namespace AgendaElectronica.Services.Services
 
         public List<Usuario> GetUsuarios()
         {
-            return _usuarioRepository.GetList(x => true, new Expression<Func<Usuario, object>>[] {x => x.Contactos});
+            return _usuarioRepository.GetList(x => x.NombreUsuario != "admin" && x.NombreUsuario != "anon",
+                new Expression<Func<Usuario, object>>[] {x => x.Contactos, x => x.Rol});
         }
 
         public Usuario GetUsuario(string idUsuario)

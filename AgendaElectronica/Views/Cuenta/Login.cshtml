@@ -1,35 +1,55 @@
 ﻿@model LoginVm
 @{
     ViewData["Title"] = "Login";
+    Layout = "_LayoutLogin";
 }
 
-<h2>Login</h2>
+<div class="col-md-4 col-sm-6 ml-auto mr-auto">
+    <form class="form" asp-controller="Cuenta" asp-action="Loguearse">
+        <div class="card card-login card-hidden">
+            <div class="card-header card-header-rose text-center">
+                <h4 class="card-title">Log in</h4>
+            </div>
+            <div class="card-body ">
+                <span class="bmd-form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="material-icons">face</i>
+                            </span>
+                        </div>
+                        <input asp-for="NombreUsuario" type="text" class="form-control" placeholder="Usuario">
+                    </div>
+                </span>
+                <span class="bmd-form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="material-icons">lock_outline</i>
+                            </span>
+                        </div>
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                    </div>
+                </span>
+            </div>
+            <div class="card-footer justify-content-center">
+                <button type="submit" class="btn btn-rose btn-link btn-lg">Ingresar</button>
+            </div>
+        </div>
+    </form>
+</div>
 
+<input type="hidden" id="mensajeLog" value="@ViewBag.mensaje"/>
 
-<form asp-controller="Cuenta" asp-action="Loguearse">
-    <label asp-for="NombreUsuario">Ingrese su nombre de usuario</label>
-    <input type="text" asp-for="NombreUsuario" placeholder="Nombre usuario"/>
-    <br/>
-    <label asp-for="Password">Ingrese su clave: </label>
-    <input type="password" asp-for="Password"/>
-    <br/>
-    <button type="submit">Ingresar</button>
-</form>
-
-
-@if (ViewBag.mensaje != null)
+@section scripts
 {
-    Mensaje mensaje = ViewBag.mensaje;
+    <script>
+        $(document).ready(function() {
+            var mensaje = $("#mensajeLog").val();
 
-    <input type="hidden" id="mensaje" value="@mensaje.Texto"/>
-    <input type="hidden" id="tipoMensaje" value="@mensaje.TipoMensaje.ToString()"/>
-
+            if (mensaje) {
+                swal('Espera', mensaje, 'warning');
+            }
+        });
+    </script>
 }
-
-<script>
-    var mensaje = document.getElementById("mensaje");
-    if (mensaje) {
-        var tipoMensaje = document.getElementById("tipoMensaje");
-        console.log("Tipo mensaje: " + tipoMensaje.value + ", mensaje: " + mensaje.value);
-    }
-</script>

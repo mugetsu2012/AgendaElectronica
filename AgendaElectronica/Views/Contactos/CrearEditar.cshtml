@@ -1,7 +1,66 @@
-﻿
+﻿@model GuardarContactoVm
 @{
-    ViewData["Title"] = "CrearEditar";
+    ViewData["Title"] = "Crear Editar";
 }
 
-<h2>CrearEditar</h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="offset-3 col-md-6">
+            <div class="card ">
+                <div class="card-header card-header-rose card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">mail_outline</i>
+                    </div>
+                    <h4 class="card-title">@(Model.Codigo == null || Model.Codigo.Value == 0 ? "Nuevo contacto":"Editar contacto")</h4>
+                </div>
+                <div class="card-body ">
+                    <form asp-controller="Contactos" asp-action="GuardarContacto" id="frmGuardarContacto" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label asp-for="Nombre" class="bmd-label-floating">Nombre</label>
+                            <input asp-for="Nombre" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Apellido" class="bmd-label-floating">Apellido</label>
+                            <input asp-for="Apellido" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="bmd-label-floating">Email</label>
+                            <input asp-for="Email" type="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TelefonoMovil" class="bmd-label-floating">Telefono movil</label>
+                            <input asp-for="TelefonoMovil" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TelefonoTrabajo" class="bmd-label-floating">Telefono Trabajo</label>
+                            <input asp-for="TelefonoTrabajo" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Direccion" class="label">Direccion</label> <br/>
+                            <textarea asp-for="Direccion" class="form-control" cols="4" rows="5"></textarea>
+                        </div>
+                        <label asp-for="Imagen" class="label">Imagen: </label>
+                        <input asp-for="Imagen" type="file">
+                        
+                        <input asp-for="Codigo"/>
+                    </form>
+                </div>
+                <div class="card-footer ">
+                    <button type="button" class="btn is-filled btn-rose" id="btnGuardarContact">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#btnGuardarContact").on('click', function(e) {
+                e.preventDefault();
+                $('#frmGuardarContacto').submit();
+            });
+        });
+    </script>
+}
