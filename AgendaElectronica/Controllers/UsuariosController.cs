@@ -92,7 +92,7 @@ namespace AgendaElectronica.Controllers
             if (PuedeVer())
             {
                 _usuarioService.EliminarUsuario(usuario);
-                return Json(new { exito = true });
+                return RedirectToAction("Index");
             }
 
             return RedirectToAction("Login", "Cuenta");

@@ -4,32 +4,31 @@
 }
 
 
-<div class="container-fluid">
+<div class="container-fluid" title="Listado de contactos" role="heading">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header card-header-rose card-header-icon">
-                    <div class="card-icon">
-                        <i class="material-icons">assignment</i>
-                    </div>
-                    <h4 class="card-title">Contactos</h4>
+                    
+                    <h4 class="card-title" title="Contactos" aria-label="Contactos">Contactos</h4>
                 </div>
                 <div class="card-body">
                     <div class="text-left">
-                        <button type="button" class="btn btn-success is-filled" id="btnNuevoContact">Nuevo</button>
+                        <button type="button" class="btn btn-success is-filled" id="btnNuevoContact" title="Botón nuevo contacto" aria-label="Botón nuevo contacto">Nuevo</button>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
+                    <div class="table-responsive" title="Tabla de contactos">
+                        <table class="table table-striped" title="Tabla de contactos" aria-label="Tabla de contactos" summary="Lista los contacyos para el usuario actual. Es posible editar y eliminar los contactos desde esta tabla">
+                            <caption>Lista de los contactos del usuario</caption>
                             <thead>
                             <tr>
 
-                                <th>Nombre</th>
-                                <th>Dirección</th>
-                                <th>Teléfono</th>
-                                <th>Celular</th>
-                                <th>Email</th>
-                                <th>Fotogrfía</th>
-                                <th class="text-right">Acciones</th>
+                                <th scope="col" title="Columna nombre contacto" aria-label="Columna nombre contacto" id="tableName">Nombre</th>
+                                <th scope="col" title="Columna dirección contacto" aria-label="Columna dirección contacto" id="tableDir">Dirección</th>
+                                <th scope="col" title="Columna teléfono contacto" aria-label="Columna teléfono contacto" id="tableTel">Teléfono</th>
+                                <th scope="col" title="Columna celular contacto" aria-label="Columna celular contacto" id="tableCel">Celular</th>
+                                <th scope="col" title="Columna email contacto" aria-label="Columna email contacto" id="tableMail">Email</th>
+                                <th scope="col" title="Columna fotografía contacto" aria-label="Columna fotografía contacto" id="tablePic">Fotogrfía</th>
+                                <th scope="col" title="Acciones" aria-label="Acciones" class="text-right">Acciones</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -37,34 +36,34 @@
                             {
                                 <tr>
 
-                                    <td>@contacto.GetNombreCompleto()</td>
-                                    <td>@contacto.Direccion</td>
-                                    <td>
+                                    <td title="Columna nombre contacto" aria-label="Columna nombre contacto" headers="tableName">@contacto.GetNombreCompleto()</td>
+                                    <td title="Columna dirección contacto" aria-label="Columna dirección contacto" headers="tableDir">@contacto.Direccion</td>
+                                    <td title="Columna teléfono contacto" aria-label="Columna teléfono contacto" headers="tableTel">
                                         @(string.IsNullOrEmpty(contacto.TelefonoTrabajo) ? "N/A" : contacto.TelefonoTrabajo)
                                     </td>
-                                    <td>
+                                    <td title="Columna celular contacto" aria-label="Columna celular contacto" headers="tableCel">
                                         @(string.IsNullOrEmpty(contacto.TelefonoMovil) ? "N/A" : contacto.TelefonoMovil)
                                     </td>
-                                    <td>
+                                    <td title="Columna email contacto" aria-label="Columna email contacto" headers="tableMail">
                                         @(string.IsNullOrEmpty(contacto.Email) ? "N/A" : contacto.Email)
                                     </td>
-                                    <td>
+                                    <td title="Columna fotografía contacto" aria-label="Columna fotografía contacto" headers="tablePic">
                                         @if (contacto.IdMultimedia == null || contacto.IdMultimedia == 0)
                                         {
-                                            <img src="@Url.Content("img/no-image.png")" width="100" height="100" />
+                                            <img src="@Url.Content("img/no-image.png")" width="100" height="100"/>
                                         }
                                         else
                                         {
-                                            <img src="@Url.Action("GetUrlImagen", new {idMultimedia = contacto.IdMultimedia})" width="100" height="100" />
+                                            <img src="@Url.Action("GetUrlImagen", new {idMultimedia = contacto.IdMultimedia})" width="100" height="100"/>
                                         }
 
                                     </td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Editar" class="btn btn-success editContact" data-url="@Url.Action("CrearEditar", new {codigo = contacto.Codigo})">
-                                            <i class="material-icons">edit</i>
+                                        <button type="button" title="Editar contacto" aria-label="Editar contacto" class="btn btn-success editContact" data-url="@Url.Action("CrearEditar", new {codigo = contacto.Codigo})">
+                                           Editar
                                         </button>
-                                        <button type="button" rel="tooltip" title="Eliminar" class="btn btn-danger deleteContact" data-codigo="@contacto.Codigo">
-                                            <i class="material-icons">close</i>
+                                        <button type="button" title="Eliminar contacto" aria-label="Eliminar contacto" class="btn btn-danger deleteContact" data-codigo="@contacto.Codigo">
+                                           Eliminar
                                         </button>
                                     </td>
                                 </tr>

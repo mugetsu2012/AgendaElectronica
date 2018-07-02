@@ -4,42 +4,37 @@
     Layout = "_LayoutLogin";
 }
 
-<div class="col-md-4 col-sm-6 ml-auto mr-auto">
-    <form class="form" asp-controller="Cuenta" asp-action="Loguearse">
+<div class="col-md-4 col-sm-6 ml-auto mr-auto" role="heading">
+    <form class="form" asp-controller="Cuenta" asp-action="Loguearse" title="Formulario de ingreso" aria-label="Formulario de ingreso">
         <div class="card card-login card-hidden">
             <div class="card-header card-header-rose text-center">
-                <h4 class="card-title">Log in</h4>
+                <h4 class="card-title" title="Log In" aria-label="Log In">Log in</h4>
             </div>
-            <div class="card-body ">
-                <span class="bmd-form-group">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="material-icons">face</i>
-                            </span>
+            <div class="card-body" role="form">
+                <fieldset>
+                    
+                    <span class="bmd-form-group">
+                        <div class="input-group">
+                            
+                            <input asp-for="NombreUsuario" type="text" class="form-control" placeholder="Usuario" alt="Nombre de Usuario" title="Nombre de Usuario" aria-label="Nombre de Usuario" required="required" aria-labelledby="btnIngreso" aria-required="true">
                         </div>
-                        <input asp-for="NombreUsuario" type="text" class="form-control" placeholder="Usuario">
-                    </div>
-                </span>
-                <span class="bmd-form-group">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="material-icons">lock_outline</i>
-                            </span>
+                    </span>
+                    <span class="bmd-form-group">
+                        <div class="input-group">
+                            
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Password" alt="Contraseña" title="Contraseña" aria-label="Contraseña" required="required" aria-labelledby="btnIngreso" aria-required="true">
                         </div>
-                        <input asp-for="Password" type="password" class="form-control" placeholder="Password">
-                    </div>
-                </span>
+                    </span>
+                </fieldset>
             </div>
             <div class="card-footer justify-content-center">
-                <button type="submit" class="btn btn-rose btn-link btn-lg">Ingresar</button>
+                <button type="submit" class="btn btn-rose btn-link btn-lg" title="Botón ingresar" aria-label="Botón ingresar" id="btnIngreso">Ingresar</button>
             </div>
         </div>
     </form>
 </div>
 
-<input type="hidden" id="mensajeLog" value="@ViewBag.mensaje"/>
+@*<input type="hidden" id="mensajeLog" value="@ViewBag.mensaje"/>*@
 
 @section scripts
 {

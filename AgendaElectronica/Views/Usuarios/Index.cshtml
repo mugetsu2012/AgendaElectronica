@@ -4,30 +4,29 @@
 }
 
 
-<div class="container-fluid">
+<div class="container-fluid" title="Listado de usuarios" role="heading">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header card-header-rose card-header-icon">
-                    <div class="card-icon">
-                        <i class="material-icons">assignment</i>
-                    </div>
-                    <h4 class="card-title">Usuarios</h4>
+                   
+                    <h4 class="card-title" title="Usuarios" aria-label="Usuarios">Usuarios</h4>
                 </div>
                 <div class="card-body">
                     <div class="text-left">
-                        <button type="button" class="btn btn-success is-filled" id="btnNuevoUser">Nuevo</button>
+                        <button type="button" class="btn btn-success is-filled" id="btnNuevoUser" title="Botón nuevo usuario" aria-label="Botón nuevo usuario">Nuevo</button>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table class="table table-striped" summary="Lista todos los usuarios del sistema. Es posible editar y eliminar usuarios por medio de esta tabla">
+                            <caption>Lista de los usuarios del sistema</caption>
                             <thead>
                             <tr>
 
-                                <th>Usuario</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Rol</th>
-                                <th class="text-right">Acciones</th>
+                                <th title="Columna nombre de usuario" aria-label="Columna nombre de usuario">Usuario</th>
+                                <th title="Columna nombre" aria-label="Columna nombre">Nombre</th>
+                                <th title="Columna Apellido" aria-label="Columna Apellido">Apellido</th>
+                                <th title="Columna rol" aria-label="Columna rol">Rol</th>
+                                <th title="Columna de Acciones" aria-label="Columna de Acciones" class="text-right">Acciones</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -35,16 +34,16 @@
                             {
                                 <tr>
 
-                                    <td>@usuario.NombreUsuario</td>
-                                    <td>@usuario.Nombre</td>
-                                    <td>@usuario.Apellido</td>
-                                    <td>@usuario.Rol.Nombre</td>
+                                    <td title="Columna nombre de usuario" aria-label="Columna nombre de usuario">@usuario.NombreUsuario</td>
+                                    <td title="Columna nombre" aria-label="Columna nombre">@usuario.Nombre</td>
+                                    <td title="Columna Apellido" aria-label="Columna Apellido">@usuario.Apellido</td>
+                                    <td title="Columna rol" aria-label="Columna rol">@usuario.Rol.Nombre</td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Editar" class="btn btn-success editUser" data-url="@Url.Action("CrearEditar", new {usuario = usuario.NombreUsuario})">
-                                            <i class="material-icons">edit</i>
+                                        <button type="button" title="Editar usuario" aria-label="Editar usuario" class="btn btn-success editUser" data-url="@Url.Action("CrearEditar", new {usuario = usuario.NombreUsuario})">
+                                         Editar  
                                         </button>
-                                        <button type="button" rel="tooltip" title="Eliminar" class="btn btn-danger deleteUser" data-usuario="@usuario.NombreUsuario">
-                                            <i class="material-icons">close</i>
+                                        <button type="button" title="Eliminar usuario" aria-label="Eliminar usuario" class="btn btn-danger deleteUser" data-usuario="@usuario.NombreUsuario">
+                                         Eliminar
                                         </button>
                                     </td>
                                 </tr>

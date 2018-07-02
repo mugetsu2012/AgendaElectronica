@@ -3,54 +3,60 @@
     ViewData["Title"] = "Crear Editar";
 }
 
-<div class="container-fluid">
+<div class="container-fluid" title="Formulario Crear Editar Usuarios" role="heading">
     <div class="row">
         <div class="offset-3 col-md-6">
             <div class="card ">
                 <div class="card-header card-header-rose card-header-icon">
-                    <div class="card-icon">
-                        <i class="material-icons">mail_outline</i>
-                    </div>
-                    <h4 class="card-title">@(string.IsNullOrEmpty(Model.NombreUsuario) ? "Nuevo usuario":"Editar usuario")</h4>
+                   
+                    <h4 class="card-title" title="Usuarios" aria-label="Usuarios">@(string.IsNullOrEmpty(Model.NombreUsuario) ? "Nuevo usuario":"Editar usuario")</h4>
                 </div>
-                <div class="card-body ">
+                <div class="card-body" role="form">
+                    <p class="text-danger" title="Todos los campos con asteriscos son requeridos" aria-label="Todos los campos con astericos son requeridos"><strong>Todos los campos con (*) son requeridos</strong></p>
                     <form asp-controller="Usuarios" asp-action="GuardarUsuario" id="frmGuardarUsuario">
-                        
-                        @if (string.IsNullOrEmpty(Model.NombreUsuario))
-                        {
-                            <div class="form-group">
-                                <label asp-for="NombreUsuario" class="bmd-label-floating">Usuario</label>
-                                <input asp-for="NombreUsuario" type="text" class="form-control">
-                            </div>
-                            <input type="hidden" name="esNuevo" value="true"/>
-                        }
-                        else
-                        {
-                            <div class="form-group">
-                                <label for="Usuario" class="bmd-label-floating">Usuario</label>
-                                <input id="Usuario" type="text" class="form-control" value="@Model.NombreUsuario" readonly="readonly">
-                            </div>
+                        <fieldset>
+                            @if (string.IsNullOrEmpty(Model.NombreUsuario))
+                            {
+                                <div class="form-group">
+                                    <label asp-for="NombreUsuario" class="label text-danger">Usuario(*)</label>
+                                    <br/>
+                                    <input asp-for="NombreUsuario" type="text" class="form-control" alt="Nombre usuario" title="Nombre usuario" aria-label="Nombre usuario" required="required" aria-labelledby="btnGuardarUser" aria-required="true">
+                                </div>
+                                <input type="hidden" name="esNuevo" value="true" />
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    <label for="Usuario" class="label text-danger">Usuario</label>
+                                    <br />
+                                    <input id="Usuario" type="text" class="form-control" value="@Model.NombreUsuario" readonly="readonly" alt="Nombre usuario" title="Nombre usuario" aria-label="Nombre usuario" aria-labelledby="btnGuardarUser" aria-required="true">
+                                </div>
 
-                            <input type="hidden" asp-for="NombreUsuario"/>
-                            <input type="hidden" name="esNuevo" value="false"/>
-                        }
+                                <input type="hidden" asp-for="NombreUsuario" />
+                                <input type="hidden" name="esNuevo" value="false" />
+                            }
 
-                        <div class="form-group">
-                            <label asp-for="Nombre" class="bmd-label-floating">Nombre</label>
-                            <input asp-for="Nombre" type="text" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Apellido" class="bmd-label-floating">Apellido</label>
-                            <input asp-for="Apellido" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Password" class="bmd-label-floating">Password</label>
-                            <input asp-for="Password" type="password" class="form-control">
-                        </div>
+                                <div class="form-group">
+                                    <label asp-for="Nombre" class="label text-danger">Nombre(*)</label>
+                                    <br />
+                                    <input asp-for="Nombre" type="text" class="form-control" alt="Nombre" title="Nombre" aria-label="Nombre" required="required" aria-labelledby="btnGuardarUser" aria-required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Apellido" class="label text-danger">Apellido(*)</label>
+                                    <br />
+                                    <input asp-for="Apellido" class="form-control" alt="Apellido" title="Apellido" aria-label="Apellido" required="required" aria-labelledby="btnGuardarUser" aria-required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Password" class="label text-danger">Password(*)</label>
+                                    <br />
+                                    <input asp-for="Password" type="password" class="form-control" alt="Constraseña" title="Contraseña" aria-label="Contraseña" required="required" aria-labelledby="btnGuardarUser" aria-required="true">
+                                </div>
+                        </fieldset>
+                       
                     </form>
                 </div>
-                <div class="card-footer ">
-                    <button type="button" class="btn is-filled btn-rose" id="btnGuardarUser">Guardar</button>
+                <div class="card-footer">
+                    <button type="submit" class="btn is-filled btn-rose" id="btnGuardarUser" title="Botón guardar usuario" aria-label="Botón guardar usuario">Guardar</button>
                 </div>
             </div>
         </div>

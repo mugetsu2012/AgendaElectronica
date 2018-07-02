@@ -1,52 +1,61 @@
 ﻿@model GuardarContactoVm
 @{
-    ViewData["Title"] = "Crear Editar";
+    ViewData["Title"] = "Crear Editar Contactos";
 }
 
-<div class="container-fluid">
+<div class="container-fluid" title="Formulario de Crear Editar Contactos" role="heading">
     <div class="row">
         <div class="offset-3 col-md-6">
             <div class="card ">
                 <div class="card-header card-header-rose card-header-icon">
-                    <div class="card-icon">
-                        <i class="material-icons">mail_outline</i>
-                    </div>
+                    
                     <h4 class="card-title">@(Model.Codigo == null || Model.Codigo.Value == 0 ? "Nuevo contacto":"Editar contacto")</h4>
                 </div>
-                <div class="card-body ">
+                <div class="card-body" role="form">
+                    <p class="text-danger" title="Todos los campos con asteriscos son requeridos" aria-label="Todos los campos con astericos son requeridos"><strong>Todos los campos con (*) son requeridos</strong></p>
                     <form asp-controller="Contactos" asp-action="GuardarContacto" id="frmGuardarContacto" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label asp-for="Nombre" class="bmd-label-floating">Nombre</label>
-                            <input asp-for="Nombre" type="text" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Apellido" class="bmd-label-floating">Apellido</label>
-                            <input asp-for="Apellido" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Email" class="bmd-label-floating">Email</label>
-                            <input asp-for="Email" type="email" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="TelefonoMovil" class="bmd-label-floating">Telefono movil</label>
-                            <input asp-for="TelefonoMovil" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="TelefonoTrabajo" class="bmd-label-floating">Telefono Trabajo</label>
-                            <input asp-for="TelefonoTrabajo" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Direccion" class="label">Direccion</label> <br/>
-                            <textarea asp-for="Direccion" class="form-control" cols="4" rows="5"></textarea>
-                        </div>
-                        <label asp-for="Imagen" class="label">Imagen: </label>
-                        <input asp-for="Imagen" type="file">
+                        <fieldset>
+                            <div class="form-group">
+                                <label asp-for="Nombre" class="label text-danger">Nombre (*)</label>
+                                <br />
+                                <input asp-for="Nombre" type="text" class="form-control" alt="Nombre contacto" title="Nombre contacto" aria-label="Nombre contacto" aria-labelledby="btnGuardarContact" aria-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Apellido" class="label text-danger">Apellido (*)</label>
+                                <br />
+                                <input asp-for="Apellido" class="form-control" alt="Apellido Contacto" title="Apellido Contacto" aria-label="Apellido Contacto" aria-labelledby="btnGuardarContact" aria-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Email" class="label">Email</label>
+                                <br />
+                                <input asp-for="Email" type="email" class="form-control" alt="Email contacto" title="Email contacto" aria-label="Email contacto" aria-labelledby="btnGuardarContact">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TelefonoMovil" class="label">Telefono movil</label>
+                                <br />
+                                <input asp-for="TelefonoMovil" class="form-control" alt="Teléfono contacto" title="Celular contacto" aria-label="Celular contacto" aria-labelledby="btnGuardarContact">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TelefonoTrabajo" class="label">Telefono Trabajo</label>
+                                <br />
+                                <input asp-for="TelefonoTrabajo" class="form-control" alt="Teléfono trabajo contacto" title="Teléfono trabajo contacto" aria-label="Teléfono trabajo contacto" aria-labelledby="btnGuardarContact">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Direccion" class="label">Direccion</label> <br />
+                                <br />
+                                <textarea asp-for="Direccion" class="form-control" cols="4" rows="5" title="Dirección contacto" aria-label="Dirección contacto" aria-labelledby="btnGuardarContact"></textarea>
+                            </div>
+                            <label asp-for="Imagen" class="label">Imagen: </label>
+                            <br />
+                            <input asp-for="Imagen" type="file" alt="Seleccione la imagen del contacto" title="Seleccione la imagen del contacto" aria-label="Seleccione la imagen del contacto" aria-labelledby="btnGuardarContact">
+
+                            <input asp-for="Codigo" />
+                        </fieldset>
                         
-                        <input asp-for="Codigo"/>
                     </form>
                 </div>
                 <div class="card-footer ">
-                    <button type="button" class="btn is-filled btn-rose" id="btnGuardarContact">Guardar</button>
+                    <button type="submit" class="btn is-filled btn-rose" id="btnGuardarContact" title="Botón Guardar Contacto" aria-label=" Botón Guardar contacto">Guardar</button>
                 </div>
             </div>
         </div>
