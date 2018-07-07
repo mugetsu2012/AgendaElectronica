@@ -20,7 +20,7 @@
                                 <div class="form-group">
                                     <label asp-for="NombreUsuario" class="label text-danger">Usuario(*)</label>
                                     <br/>
-                                    <input asp-for="NombreUsuario" type="text" class="form-control" alt="Nombre usuario" title="Nombre usuario" aria-label="Nombre usuario" required="required" aria-labelledby="btnGuardarUser" aria-required="true">
+                                    <input asp-for="NombreUsuario" type="text" class="form-control" title="Nombre usuario" aria-label="Nombre usuario" required="required" aria-labelledby="btnGuardarUser" aria-required="true">
                                 </div>
                                 <input type="hidden" name="esNuevo" value="true" />
                             }
@@ -29,7 +29,7 @@
                                 <div class="form-group">
                                     <label for="Usuario" class="label text-danger">Usuario</label>
                                     <br />
-                                    <input id="Usuario" type="text" class="form-control" value="@Model.NombreUsuario" readonly="readonly" alt="Nombre usuario" title="Nombre usuario" aria-label="Nombre usuario" aria-labelledby="btnGuardarUser" aria-required="true">
+                                    <input id="Usuario" type="text" class="form-control" value="@Model.NombreUsuario" readonly="readonly" title="Nombre usuario" aria-label="Nombre usuario" aria-labelledby="btnGuardarUser" aria-required="true">
                                 </div>
 
                                 <input type="hidden" asp-for="NombreUsuario" />
@@ -39,20 +39,20 @@
                                 <div class="form-group">
                                     <label asp-for="Nombre" class="label text-danger">Nombre(*)</label>
                                     <br />
-                                    <input asp-for="Nombre" type="text" class="form-control" alt="Nombre" title="Nombre" aria-label="Nombre" required="required" aria-labelledby="btnGuardarUser" aria-required="true">
+                                    <input asp-for="Nombre" type="text" class="form-control" title="Nombre" aria-label="Nombre" required="required" aria-labelledby="btnGuardarUser" aria-required="true">
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Apellido" class="label text-danger">Apellido(*)</label>
                                     <br />
-                                    <input asp-for="Apellido" class="form-control" alt="Apellido" title="Apellido" aria-label="Apellido" required="required" aria-labelledby="btnGuardarUser" aria-required="true">
+                                    <input asp-for="Apellido" class="form-control" title="Apellido" aria-label="Apellido" required="required" aria-labelledby="btnGuardarUser" aria-required="true">
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Password" class="label text-danger">Password(*)</label>
                                     <br />
-                                    <input asp-for="Password" type="password" class="form-control" alt="Constraseña" title="Contraseña" aria-label="Contraseña" required="required" aria-labelledby="btnGuardarUser" aria-required="true">
+                                    <input asp-for="Password" type="password" class="form-control" title="Contraseña" aria-label="Contraseña" required="required" aria-labelledby="btnGuardarUser" aria-required="true">
                                 </div>
                         </fieldset>
-                       
+                       <button style="display: none" type="submit">Submit</button>
                     </form>
                 </div>
                 <div class="card-footer">

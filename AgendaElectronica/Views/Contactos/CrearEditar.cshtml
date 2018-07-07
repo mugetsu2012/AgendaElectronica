@@ -18,27 +18,27 @@
                             <div class="form-group">
                                 <label asp-for="Nombre" class="label text-danger">Nombre (*)</label>
                                 <br />
-                                <input asp-for="Nombre" type="text" class="form-control" alt="Nombre contacto" title="Nombre contacto" aria-label="Nombre contacto" aria-labelledby="btnGuardarContact" aria-required="true">
+                                <input asp-for="Nombre" type="text" class="form-control" title="Nombre contacto" aria-label="Nombre contacto" aria-labelledby="btnGuardarContact" aria-required="true">
                             </div>
                             <div class="form-group">
                                 <label asp-for="Apellido" class="label text-danger">Apellido (*)</label>
                                 <br />
-                                <input asp-for="Apellido" class="form-control" alt="Apellido Contacto" title="Apellido Contacto" aria-label="Apellido Contacto" aria-labelledby="btnGuardarContact" aria-required="true">
+                                <input asp-for="Apellido" class="form-control" title="Apellido Contacto" aria-label="Apellido Contacto" aria-labelledby="btnGuardarContact" aria-required="true">
                             </div>
                             <div class="form-group">
                                 <label asp-for="Email" class="label">Email</label>
                                 <br />
-                                <input asp-for="Email" type="email" class="form-control" alt="Email contacto" title="Email contacto" aria-label="Email contacto" aria-labelledby="btnGuardarContact">
+                                <input asp-for="Email" type="email" class="form-control" title="Email contacto" aria-label="Email contacto" aria-labelledby="btnGuardarContact">
                             </div>
                             <div class="form-group">
                                 <label asp-for="TelefonoMovil" class="label">Telefono movil</label>
                                 <br />
-                                <input asp-for="TelefonoMovil" class="form-control" alt="Teléfono contacto" title="Celular contacto" aria-label="Celular contacto" aria-labelledby="btnGuardarContact">
+                                <input asp-for="TelefonoMovil" class="form-control" title="Celular contacto" aria-label="Celular contacto" aria-labelledby="btnGuardarContact">
                             </div>
                             <div class="form-group">
                                 <label asp-for="TelefonoTrabajo" class="label">Telefono Trabajo</label>
                                 <br />
-                                <input asp-for="TelefonoTrabajo" class="form-control" alt="Teléfono trabajo contacto" title="Teléfono trabajo contacto" aria-label="Teléfono trabajo contacto" aria-labelledby="btnGuardarContact">
+                                <input asp-for="TelefonoTrabajo" class="form-control" title="Teléfono trabajo contacto" aria-label="Teléfono trabajo contacto" aria-labelledby="btnGuardarContact">
                             </div>
                             <div class="form-group">
                                 <label asp-for="Direccion" class="label">Direccion</label> <br />
@@ -47,11 +47,11 @@
                             </div>
                             <label asp-for="Imagen" class="label">Imagen: </label>
                             <br />
-                            <input asp-for="Imagen" type="file" alt="Seleccione la imagen del contacto" title="Seleccione la imagen del contacto" aria-label="Seleccione la imagen del contacto" aria-labelledby="btnGuardarContact">
+                            <input asp-for="Imagen" type="file" title="Seleccione la imagen del contacto" aria-label="Seleccione la imagen del contacto" aria-labelledby="btnGuardarContact">
 
                             <input asp-for="Codigo" />
                         </fieldset>
-                        
+                        <button style="display: none" type="submit">Submit</button>
                     </form>
                 </div>
                 <div class="card-footer ">

@@ -8,23 +8,23 @@
     <form class="form" asp-controller="Cuenta" asp-action="Loguearse" title="Formulario de ingreso" aria-label="Formulario de ingreso">
         <div class="card card-login card-hidden">
             <div class="card-header card-header-rose text-center">
-                <h4 class="card-title" title="Log In" aria-label="Log In">Log in</h4>
+                <h1 class="card-title" title="Log In" aria-label="Log In">Log in</h1>
             </div>
             <div class="card-body" role="form">
                 <fieldset>
                     
-                    <span class="bmd-form-group">
+                    <div class="bmd-form-group">
                         <div class="input-group">
                             
-                            <input asp-for="NombreUsuario" type="text" class="form-control" placeholder="Usuario" alt="Nombre de Usuario" title="Nombre de Usuario" aria-label="Nombre de Usuario" required="required" aria-labelledby="btnIngreso" aria-required="true">
+                            <input asp-for="NombreUsuario" type="text" class="form-control" placeholder="Usuario" title="Nombre de Usuario" aria-label="Nombre de Usuario" required="required" aria-labelledby="btnIngreso" aria-required="true">
                         </div>
-                    </span>
-                    <span class="bmd-form-group">
+                    </div>
+                    <div class="bmd-form-group">
                         <div class="input-group">
                             
-                            <input asp-for="Password" type="password" class="form-control" placeholder="Password" alt="Contraseña" title="Contraseña" aria-label="Contraseña" required="required" aria-labelledby="btnIngreso" aria-required="true">
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Password" title="Contraseña" aria-label="Contraseña" required="required" aria-labelledby="btnIngreso" aria-required="true">
                         </div>
-                    </span>
+                    </div>
                 </fieldset>
             </div>
             <div class="card-footer justify-content-center">

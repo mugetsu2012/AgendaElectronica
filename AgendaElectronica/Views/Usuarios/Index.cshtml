@@ -17,7 +17,7 @@
                         <button type="button" class="btn btn-success is-filled" id="btnNuevoUser" title="Botón nuevo usuario" aria-label="Botón nuevo usuario">Nuevo</button>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-striped" summary="Lista todos los usuarios del sistema. Es posible editar y eliminar usuarios por medio de esta tabla">
+                        <table class="table table-striped">
                             <caption>Lista de los usuarios del sistema</caption>
                             <thead>
                             <tr>
@@ -57,8 +57,9 @@
     </div>
 </div>
 
-<form asp-controller="Usuarios" asp-action="EliminarUsuario" id="frmDeleteUsuario" style="display: none;">
+<form method="post" asp-controller="Usuarios" asp-action="EliminarUsuario" id="frmDeleteUsuario" style="display: none;">
     <input type="hidden" id="codeDelete" name="usuario"/>
+    <button type="submit" style="display: none">Submit</button>
 </form>
 
 <input type="hidden" id="urlNuevoUser" value="@Url.Action("CrearEditar")"/>

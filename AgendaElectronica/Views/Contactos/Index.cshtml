@@ -17,7 +17,7 @@
                         <button type="button" class="btn btn-success is-filled" id="btnNuevoContact" title="Botón nuevo contacto" aria-label="Botón nuevo contacto">Nuevo</button>
                     </div>
                     <div class="table-responsive" title="Tabla de contactos">
-                        <table class="table table-striped" title="Tabla de contactos" aria-label="Tabla de contactos" summary="Lista los contacyos para el usuario actual. Es posible editar y eliminar los contactos desde esta tabla">
+                        <table class="table table-striped" title="Tabla de contactos" aria-label="Tabla de contactos">
                             <caption>Lista de los contactos del usuario</caption>
                             <thead>
                             <tr>
@@ -50,11 +50,11 @@
                                     <td title="Columna fotografía contacto" aria-label="Columna fotografía contacto" headers="tablePic">
                                         @if (contacto.IdMultimedia == null || contacto.IdMultimedia == 0)
                                         {
-                                            <img src="@Url.Content("img/no-image.png")" width="100" height="100"/>
+                                            <img src="@Url.Content("img/no-image.png")" width="100" height="100" alt="Fotografia por defecto" title="Fotofrafía por defecto"/>
                                         }
                                         else
                                         {
-                                            <img src="@Url.Action("GetUrlImagen", new {idMultimedia = contacto.IdMultimedia})" width="100" height="100"/>
+                                            <img src="@Url.Action("GetUrlImagen", new {idMultimedia = contacto.IdMultimedia})" width="100" height="100" alt="Fotografia contacto" title="Fotografia contacto"/>
                                         }
 
                                     </td>
@@ -77,8 +77,9 @@
     </div>
 </div>
 
-<form asp-controller="Contactos" asp-action="EliminarContacto" id="frmDeleteContact" style="display: none;">
+<form method="post" asp-controller="Contactos" asp-action="EliminarContacto" id="frmDeleteContact" style="display: none;">
     <input type="hidden" id="codeDelete" name="idContacto"/>
+    <button type="submit" style="display: none">Submit</button>
 </form>
 
 <input type="hidden" id="urlNuevoContact" value="@Url.Action("CrearEditar")"/>
